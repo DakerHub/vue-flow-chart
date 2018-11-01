@@ -1,12 +1,12 @@
 {
-  "name": "vue-flow-chart",
+  "name": "v-flow-chart",
   "version": "0.1.0",
   "description": "A vue component to display a flow chart",
   "keywords": [
     "flow chart",
     "vuejs"
   ],
-  "main": "dist/vue-flow-chart.min.js",
+  "main": "dist/v-flow-chart.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
