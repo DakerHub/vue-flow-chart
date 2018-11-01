@@ -1,6 +1,6 @@
 {
   "name": "v-flow-chart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A vue component to display a flow chart",
   "keywords": [
     "flow chart",
@@ -9,12 +9,13 @@
   "main": "dist/v-flow-chart.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode production --dest dist --target lib --name v-flow-chart src/components/VFlowChart/Index.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "lodash.clonedeep": "^4.5.0",
+    "pathfinding": "^0.4.18"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.1.0",
@@ -28,7 +29,8 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vue": "^2.5.17"
   },
   "license": "MIT"
 }

@@ -95,7 +95,7 @@ import limitRange from './lib/limitRange.js'
 import clonedeep from 'lodash.clonedeep'
 
 export default {
-  name: 'FlowChart',
+  name: 'VFlowChart',
   props: {
     value: {
       type: Array,
