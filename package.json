@@ -1,5 +1,6 @@
 {
   "name": "v-flow-chart",
+  "author": "Daker",
   "version": "0.1.2",
   "description": "A vue component to display a flow chart",
   "keywords": [
@@ -7,6 +8,7 @@
     "vuejs"
   ],
   "main": "dist/v-flow-chart.umd.min.js",
+  "homepage": "https://github.com/tony-cn/vue-flow-chart",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production --dest dist --target lib --name v-flow-chart src/components/VFlowChart/Index.vue",
