@@ -205,11 +205,11 @@ export default {
     }
 
     this.$svgContainer.addEventListener('mousemove', recodeMouse)
-    
+
     this.$once('hook:beforeDestroy', function () {
       this.$svgContainer.removeEventListener('mousemove', recodeMouse)
     })
-    
+
     this.bindHotKey()
   },
   methods: {
@@ -322,7 +322,7 @@ export default {
           width: this.width,
           height: this.height
         }, 0, 0, this.maxWidth / this.scale, this.maxHeight / this.scale)
-   
+
         this.svgOffsetX = positionLimited.x
         this.svgOffsetY = positionLimited.y
       }
