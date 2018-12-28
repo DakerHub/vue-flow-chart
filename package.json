@@ -1,7 +1,7 @@
 {
   "name": "v-flow-chart",
   "author": "Daker",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A vue component to display a flow chart",
   "keywords": [
     "flow chart",
