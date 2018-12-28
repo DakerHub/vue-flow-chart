@@ -1,7 +1,7 @@
 {
   "name": "v-flow-chart",
   "author": "Daker",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A vue component to display a flow chart",
   "keywords": [
     "flow chart",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "lodash.clonedeep": "^4.5.0",
+    "lodash.isequal": "^4.5.0",
     "pathfinding": "^0.4.18"
   },
   "devDependencies": {

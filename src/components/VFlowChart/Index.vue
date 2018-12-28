@@ -93,6 +93,7 @@ import getPathPoints from './lib/getPathPoints.js'
 import Grid from './lib/Grid.js'
 import limitRange from './lib/limitRange.js'
 import clonedeep from 'lodash.clonedeep'
+import isequal from 'lodash.isequal'
 
 export default {
   name: 'VFlowChart',
@@ -172,6 +173,8 @@ export default {
     value: {
       immediate: true,
       handler(val) {
+        if (isequal(val, this.nodes)) return
+
         const nodes = clonedeep(val)
         nodes.forEach(node => {
           const nodePositionLimited = limitRange(node, 0, 0, this.maxWidth, this.maxHeight)
@@ -270,6 +273,8 @@ export default {
       if (targetNode) {
         targetNode.prevId = currentNodeId
       }
+
+      this.$emit('node-link', targetNodeId, currentNodeId)
     },
     nodeChange(node) {
       this.grid.clearBlocks()
@@ -279,6 +284,7 @@ export default {
       this.blocks = this.grid.addBlocks(nodes)
 
       this.nodes = nodes
+      this.$emit('node-change', node)
     },
     handleMousewheel(e) {
       if (!(this.scale >= 0.5 && this.scale <= 2)) return
