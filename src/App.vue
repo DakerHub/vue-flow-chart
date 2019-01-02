@@ -4,7 +4,11 @@
       :value="nodes"
       :width="640"
       :height="640"
+      in-select-color="#FF9E1B"
       :high-light-radius="10"
+      :show-grid="true"
+      :path-width="5"
+      path-color="#FF9E1B"
       :use-router="true">
       <template slot-scope="{node}" slot="content">
         <FlowChartNode :node="node"></FlowChartNode>
@@ -25,8 +29,14 @@ export default {
   },
   data () {
     return {
-      nodes: [
+      nodes: []
+    }
+  },
+  created () {
+    setTimeout(() => {
+      this.nodes = [
         {
+          prevId: '',
           id: '1',
           x: 200,
           y: 400,
@@ -35,6 +45,7 @@ export default {
           text: 'node1沙发沙发'
         },
         {
+          prevId: '',
           id: '2',
           x: 200,
           y: 400,
@@ -43,7 +54,7 @@ export default {
           text: 'node1沙发沙发'
         }
       ]
-    }
+    }, 1000)
   }
 }
 </script>

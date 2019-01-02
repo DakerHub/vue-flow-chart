@@ -24,8 +24,8 @@
       <rect
         :width="8*scale"
         :height="8*scale"
-        :stroke="currentNode.indicatorColor||'#2196F3'"
-        :fill="currentNode.indicatorColor||'#2196F3'"
+        :stroke="indicatorColor"
+        :fill="indicatorColor"
         cursor="pointer"
         :transform="`translate(${currentNode.width/2-4*scale}, ${currentNode.height-1})`"
         @mousedown.stop="e => handleStartLink(e, currentNode)">
@@ -87,6 +87,10 @@ export default {
     inSelectColor: {
       type: String,
       default: '#ffeb3b'
+    },
+    indicatorColor: {
+      type: String,
+      default: '#2196f3'
     }
   },
   data() {

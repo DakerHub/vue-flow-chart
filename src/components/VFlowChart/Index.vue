@@ -25,6 +25,8 @@
         :path="item"
         :scale="scale"
         :path-color="pathColor"
+        :path-color-select="pathColorSelect"
+        :path-width="pathWidth"
         :current-path-id="currentPathId"
         :grid="grid"
         :row="row"
@@ -50,6 +52,7 @@
         :high-light-radius="highLightRadius"
         :in-link-color="inLinkColor"
         :in-select-color="inSelectColor"
+        :indicator-color="indicatorColor"
         :current-node-id="currentNodeId"
         @create-placeholder="createPlaceholder"
         @remove-node="removeNode"
@@ -109,6 +112,14 @@ export default {
       type: String,
       default: '#b39ddb'
     },
+    pathColorSelect: {
+      type: String,
+      default: '#ffeb3b'
+    },
+    pathWidth: {
+      type: Number,
+      default: 4
+    },
     width: {
       type: Number,
       default: 640
@@ -156,6 +167,10 @@ export default {
     inSelectColor: {
       type: String,
       default: '#ffeb3b'
+    },
+    indicatorColor: {
+      type: String,
+      default: '#2196f3'
     }
   },
   components: {
@@ -195,6 +210,11 @@ export default {
           const nodePositionLimited = limitRange(node, 0, 0, this.maxWidth, this.maxHeight)
           Object.assign(node, nodePositionLimited)
         })
+
+        if (this.grid) {
+          this.resetBlocks(nodes)
+        }
+
         this.nodes = nodes
       }
     }
@@ -212,7 +232,7 @@ export default {
   },
   created() {
     this.grid = new Grid(this.row, this.col, this.maxWidth, this.maxHeight)
-    this.blocks = this.grid.addBlocks(this.nodes)
+    this.resetBlocks(this.nodes)
   },
   mounted() {
     this.$svgContainer = this.$el.querySelector('.svg-container')
@@ -286,20 +306,20 @@ export default {
     linkNode(targetNodeId, currentNodeId) {
       const targetNode = this.nodes.find(r => r.id === targetNodeId)
       if (targetNode) {
-        targetNode.prevId = currentNodeId
+        this.$set(targetNode, 'prevId', currentNodeId)
       }
 
       this.$emit('node-link', targetNodeId, currentNodeId)
     },
     nodeChange(node) {
-      this.grid.clearBlocks()
-      const nodes = clonedeep(this.nodes)
-      const idx = nodes.findIndex(n => n.id === node.id)
-      nodes[idx] = clonedeep(node)
-      this.blocks = this.grid.addBlocks(nodes)
-
-      this.nodes = nodes
+      const idx = this.nodes.findIndex(n => n.id === node.id)
+      this.nodes.splice(idx, 1, clonedeep(node))
+      this.resetBlocks(this.nodes)
       this.$emit('node-change', node)
+    },
+    resetBlocks (nodes) {
+      this.grid.clearBlocks()
+      this.blocks = this.grid.addBlocks(nodes)
     },
     handleMousewheel(e) {
       if (!(this.scale >= 0.5 && this.scale <= 2)) return

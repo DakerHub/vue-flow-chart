@@ -3,7 +3,7 @@
     <path
       :d="svgPath"
       :stroke="inSelect?'#FFEB3B':pathColor"
-      :stroke-width="inSelect?6:3"
+      :stroke-width="inSelect?pathWidth*2:pathWidth"
       stroke-linejoin="round"
       fill="none"
       cursor="pointer"></path>
@@ -26,6 +26,14 @@ export default {
     pathColor: {
       type: String,
       default: '#b39ddb'
+    },
+    pathColorSelect: {
+      type: String,
+      default: '#ffeb3b'
+    },
+    pathWidth: {
+      type: Number,
+      default: 4
     },
     currentPathId: {
       type: String,
