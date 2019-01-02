@@ -17,9 +17,9 @@ export default class Grid {
     this.initGrid()
   }
   initGrid() {
-    this.grid = new Array(this.col).fill(0)
-    this.grid.forEach((col, i, arr) => {
-      arr[i] = new Array(this.row).fill(0)
+    this.grid = new Array(this.row).fill(0)
+    this.grid.forEach((row, i, arr) => {
+      arr[i] = new Array(this.col).fill(0)
     })
   }
   getGrid() {
