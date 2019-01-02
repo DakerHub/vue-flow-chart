@@ -14,7 +14,6 @@
 import getSvgPath from './../lib/getSvgPath.js'
 import SvgPath from './../lib/SvgPath.js'
 import PF from 'pathfinding'
-console.log(PF)
 
 export default {
   name: 'FlowChartPath',
