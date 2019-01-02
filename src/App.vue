@@ -1,19 +1,49 @@
 <template>
   <div id="app">
     <VFlowChart
+      :value="nodes"
       :width="640"
       :height="640"
-      :show-grid="true"
-      :user-router="true"></VFlowChart>
+      :high-light-radius="10"
+      :use-router="true">
+      <template slot-scope="{node}" slot="content">
+        <FlowChartNode :node="node"></FlowChartNode>
+      </template>
+    </VFlowChart>
   </div>
 </template>
 
 <script>
 import VFlowChart from './components/VFlowChart/Index'
+import FlowChartNode from './examples/FlowChartNode'
+
 export default {
   name: 'app',
   components: {
-    VFlowChart
+    VFlowChart,
+    FlowChartNode
+  },
+  data () {
+    return {
+      nodes: [
+        {
+          id: '1',
+          x: 200,
+          y: 400,
+          width: 200,
+          height: 60,
+          text: 'node1沙发沙发'
+        },
+        {
+          id: '2',
+          x: 200,
+          y: 400,
+          width: 200,
+          height: 60,
+          text: 'node1沙发沙发'
+        }
+      ]
+    }
   }
 }
 </script>
@@ -37,6 +67,7 @@ export default {
   height: 700px;
   width: 700px;
   border: thin solid #ccc;
+  background-color: #fafafa;
 }
 .svg-container{
   border: thin solid #ccc;

@@ -7,37 +7,19 @@
       <rect
         :width="currentNode.width + 6"
         :height="currentNode.height + 6"
-        rx="8"
-        ry="8"
-        :stroke="inSelect?'#FFEB3B':'#ccc'"
+        :rx="highLightRadius"
+        :ry="highLightRadius"
+        :stroke="inSelect?inSelectColor:inLinkColor"
         stroke-width="4"
         stroke-linejoin="round"
-        fill="rgba(255,255,255,0)"
+        :fill="inSelect?inSelectColor:inLinkColor"
         transform="translate(-3, -3)"></rect>
     </g>
-    <!-- <g v-if="isLinkHandler">
-      <circle
-        :r="8*scale"
-        fill="#616161"
-        pointer-events="none"></circle>
-    </g> -->
     <g
       v-if="!isLinkHandler"
       style="user-select: none;"
       cursor="move"
       @mousedown.left.stop="e => handleMouseDown(e, currentNode)">
-      <rect
-        class="g-box"
-        :data-id="currentNode.id"
-        :width="currentNode.width"
-        :height="currentNode.height"
-        rx="4"
-        ry="4"
-        :stroke="currentNode.borderColor||'#2e7d32'"
-        stroke-width="2"
-        stroke-linejoin="round"
-        fill="rgba(255,255,255,0)">
-      </rect>
       <slot pointer-events="none"></slot>
       <rect
         :width="8*scale"
@@ -93,6 +75,18 @@ export default {
     maxHeight: {
       type: Number,
       default: 0
+    },
+    highLightRadius: {
+      type: Number,
+      default: 8
+    },
+    inLinkColor: {
+      type: String,
+      default: '#ccc'
+    },
+    inSelectColor: {
+      type: String,
+      default: '#ffeb3b'
     }
   },
   data() {

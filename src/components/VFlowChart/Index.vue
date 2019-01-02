@@ -47,6 +47,9 @@
         :max-width="maxWidth"
         :max-height="maxHeight"
         :is-link-handler="item.isLinkHandler"
+        :high-light-radius="highLightRadius"
+        :in-link-color="inLinkColor"
+        :in-select-color="inSelectColor"
         :current-node-id="currentNodeId"
         @create-placeholder="createPlaceholder"
         @remove-node="removeNode"
@@ -141,6 +144,18 @@ export default {
     tools: {
       type: Array,
       default: () => ['thumbnail', 'resetScale', 'mousePosition']
+    },
+    highLightRadius: {
+      type: Number,
+      default: 8
+    },
+    inLinkColor: {
+      type: String,
+      default: '#ccc'
+    },
+    inSelectColor: {
+      type: String,
+      default: '#ffeb3b'
     }
   },
   components: {
